@@ -60,7 +60,13 @@ const numUp = () => {
   if (lvls < 8) {
     lvls += 1;
     lvlnum.innerText = lvls;
+    addDiv();
   }
+};
+const addDiv = () => {
+  let div = document.createElement("div");
+  div.className = "ring";
+  boxes[0].insertBefore(div, boxes[0].firstElementChild);
 };
 
 bttns.addEventListener("click", press);
