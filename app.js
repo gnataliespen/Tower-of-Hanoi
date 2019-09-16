@@ -1,7 +1,12 @@
+//variables
 const boxes = document.querySelectorAll(".box");
 const shell = document.querySelector(".wrapper");
+const bttns = document.querySelector(".bttns");
+const lvlnum = document.querySelector(".lvlnum");
+let lvls = 3;
 
-shell.addEventListener("mousemove", evt => {
+//event functions
+const draggable = evt => {
   if (evt.target.className.includes("ring")) {
     if (evt.target.previousElementSibling === null) {
       evt.target.setAttribute("draggable", "true");
@@ -9,18 +14,17 @@ shell.addEventListener("mousemove", evt => {
       evt.target.setAttribute("draggable", "false");
     }
   }
-});
+};
 
 const dragStart = evt => {
   // evt.dataTransfer.dropEffect = "move";
-  //console.log(evt.dataTransfer.dropEffect);
   evt.dataTransfer.setData("text", evt.target.classList);
+};
+const dragEnter = evt => {
+  evt.preventDefault();
 };
 
 const dragOver = evt => {
-  evt.preventDefault();
-};
-const dragEnter = evt => {
   evt.preventDefault();
 };
 
@@ -36,32 +40,25 @@ const drop = evt => {
     evt.target.insertBefore(div, evt.target.firstElementChild);
   }
   //source https://www.w3schools.com/jsref/met_node_insertbefore.asp
+  gameOver();
 };
-
-shell.addEventListener("dragover", dragOver);
-shell.addEventListener("dragstart", dragStart);
-shell.addEventListener("dragenter", dragEnter);
-shell.addEventListener("drop", drop);
-
-const bttns = document.querySelector(".bttns");
-const lvlnum = document.querySelector(".lvlnum");
-let lvls = 3;
 
 const press = evt => {
   evt.target.onclick;
+};
+//helper functions
+const numUp = () => {
+  if (lvls < 8) {
+    lvls += 1;
+    lvlnum.innerText = lvls;
+    addDiv();
+  }
 };
 const numDn = () => {
   if (lvls > 3) {
     lvls -= 1;
     lvlnum.innerText = lvls;
     lessDiv();
-  }
-};
-const numUp = () => {
-  if (lvls < 8) {
-    lvls += 1;
-    lvlnum.innerText = lvls;
-    addDiv();
   }
 };
 const addDiv = () => {
@@ -77,5 +74,16 @@ const lessDiv = () => {
     i++;
   }
 };
+const gameOver = () => {
+  if (boxes[2].children.length === lvls) {
+    console.log("Game Over");
+  }
+};
 
+//Event Listeners
+shell.addEventListener("mousemove", draggable);
+shell.addEventListener("dragstart", dragStart);
+shell.addEventListener("dragover", dragOver);
+shell.addEventListener("dragenter", dragEnter);
+shell.addEventListener("drop", drop);
 bttns.addEventListener("click", press);
