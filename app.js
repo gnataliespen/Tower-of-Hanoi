@@ -12,19 +12,26 @@ shell.addEventListener("mousemove", evt => {
   }
 });
 const dragStart = evt => {
-  evt.dataTransfer.dropEffect = "move";
   evt.dataTransfer.setData("text", evt.target.classList);
 };
+
 const dragOver = evt => {
   evt.preventDefault();
 };
 const dragEnter = evt => {
   evt.preventDefault();
 };
+
 const drop = evt => {
   let cl = evt.dataTransfer.getData("text");
   let div = document.querySelector(`.${cl.split(" ")[1]}`);
-  evt.target.insertBefore(div, evt.target.childNodes[0]);
+  // source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+  if (
+    !evt.target.childNodes[0] ||
+    div.offsetWidth < evt.target.childNodes[0].offsetWidth
+  ) {
+    evt.target.insertBefore(div, evt.target.childNodes[0]);
+  }
   //source https://www.w3schools.com/jsref/met_node_insertbefore.asp
 };
 
