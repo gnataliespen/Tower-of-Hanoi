@@ -36,15 +36,11 @@ body {
 }
 
 .ring1 {
-  width: 2vh;
+  width: 10%;
 }
 .ring2 {
-  width: 5vh;
+  width: 30%;
 }
 .ring3 {
-  width: 8vh;
-}
-
-.drag {
-  display: none;
+  width: 50%;
 }

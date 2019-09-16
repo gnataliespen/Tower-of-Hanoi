@@ -11,6 +11,23 @@ shell.addEventListener("mousemove", evt => {
     }
   }
 });
-shell.addEventListener("drag", evt => {
-  evt.target.classList.add("drag");
-});
+const dragStart = evt => {
+  evt.dataTransfer.dropEffect = "move";
+  evt.dataTransfer.setData("text", evt.target.classList);
+};
+const dragOver = evt => {
+  evt.preventDefault();
+};
+const dragEnter = evt => {
+  evt.preventDefault();
+};
+const drop = evt => {
+  let cl = evt.dataTransfer.getData("text");
+  let div = document.querySelector(`.${cl.split(" ")[1]}`);
+  evt.target.append(div);
+};
+
+shell.addEventListener("dragover", dragOver);
+shell.addEventListener("dragstart", dragStart);
+shell.addEventListener("dragenter", dragEnter);
+shell.addEventListener("drop", drop);
