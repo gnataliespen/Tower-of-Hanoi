@@ -54,6 +54,7 @@ const numDn = () => {
   if (lvls > 3) {
     lvls -= 1;
     lvlnum.innerText = lvls;
+    lessDiv();
   }
 };
 const numUp = () => {
@@ -67,6 +68,9 @@ const addDiv = () => {
   let div = document.createElement("div");
   div.className = "ring";
   boxes[0].insertBefore(div, boxes[0].firstElementChild);
+};
+const lessDiv = () => {
+  boxes[0].firstElementChild.remove();
 };
 
 bttns.addEventListener("click", press);
