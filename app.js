@@ -42,3 +42,25 @@ shell.addEventListener("dragover", dragOver);
 shell.addEventListener("dragstart", dragStart);
 shell.addEventListener("dragenter", dragEnter);
 shell.addEventListener("drop", drop);
+
+const bttns = document.querySelector(".bttns");
+const lvlnum = document.querySelector(".lvlnum");
+let lvls = 3;
+
+const press = evt => {
+  evt.target.onclick;
+};
+const numDn = () => {
+  if (lvls > 3) {
+    lvls -= 1;
+    lvlnum.innerText = lvls;
+  }
+};
+const numUp = () => {
+  if (lvls < 8) {
+    lvls += 1;
+    lvlnum.innerText = lvls;
+  }
+};
+
+bttns.addEventListener("click", press);
