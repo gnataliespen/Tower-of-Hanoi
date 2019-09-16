@@ -44,3 +44,20 @@ body {
 .ring3 {
   width: 50%;
 }
+.info {
+  width: 100%;
+}
+.levels {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.levels > * {
+  margin: 5px;
+}
+.bttns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
