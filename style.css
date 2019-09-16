@@ -21,9 +21,7 @@ body {
   width: 75%;
   height: 250px;
 }
-.box1,
-.box2,
-.box3 {
+.box {
   background: black;
   border: 2px solid white;
   width: 33%;
@@ -32,9 +30,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.ring1,
-.ring2,
-.ring3 {
+.ring {
   background: white;
   height: 25px;
 }
@@ -47,4 +43,8 @@ body {
 }
 .ring3 {
   width: 8vh;
+}
+
+.drag {
+  display: none;
 }
