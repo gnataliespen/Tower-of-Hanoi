@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  width: 75%;
+  height: 250px;
+}
+.box1,
+.box2,
+.box3 {
+  background: black;
+  border: 2px solid white;
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+.ring1,
+.ring2,
+.ring3 {
+  background: white;
+  height: 25px;
+}
+
+.ring1 {
+  width: 2vh;
+}
+.ring2 {
+  width: 5vh;
+}
+.ring3 {
+  width: 8vh;
+}
