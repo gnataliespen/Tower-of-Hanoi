@@ -1,5 +1,4 @@
 const boxes = document.querySelectorAll(".box");
-const rings = document.querySelectorAll(".ring");
 const shell = document.querySelector(".wrapper");
 
 shell.addEventListener("mousemove", evt => {
@@ -11,7 +10,10 @@ shell.addEventListener("mousemove", evt => {
     }
   }
 });
+
 const dragStart = evt => {
+  // evt.dataTransfer.dropEffect = "move";
+  //console.log(evt.dataTransfer.dropEffect);
   evt.dataTransfer.setData("text", evt.target.classList);
 };
 
@@ -27,10 +29,11 @@ const drop = evt => {
   let div = document.querySelector(`.${cl.split(" ")[1]}`);
   // source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
   if (
-    !evt.target.childNodes[0] ||
-    div.offsetWidth < evt.target.childNodes[0].offsetWidth
+    (!evt.target.firstElementChild ||
+      div.offsetWidth < evt.target.firstElementChild.offsetWidth) &&
+    evt.target.className.includes("box")
   ) {
-    evt.target.insertBefore(div, evt.target.childNodes[0]);
+    evt.target.insertBefore(div, evt.target.firstElementChild);
   }
   //source https://www.w3schools.com/jsref/met_node_insertbefore.asp
 };
