@@ -32,9 +32,34 @@ body {
 }
 .ring {
   background: white;
-  border: 1px solid black;
-  width: 25px;
   height: 25px;
+  width: 25px;
+  border: 1px solid black;
+}
+
+.ring1 {
+  width: 10%;
+}
+.ring2 {
+  width: 20%;
+}
+.ring3 {
+  width: 30%;
+}
+.ring4 {
+  width: 40%;
+}
+.ring5 {
+  width: 50%;
+}
+.ring6 {
+  width: 60%;
+}
+.ring7 {
+  width: 70%;
+}
+.ring8 {
+  width: 80%;
 }
 .info {
   width: 100%;

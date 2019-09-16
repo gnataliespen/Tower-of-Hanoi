@@ -66,11 +66,16 @@ const numUp = () => {
 };
 const addDiv = () => {
   let div = document.createElement("div");
-  div.className = "ring";
-  boxes[0].insertBefore(div, boxes[0].firstElementChild);
+  div.className = `ring ring${lvls}`;
+  boxes[0].appendChild(div);
 };
 const lessDiv = () => {
   boxes[0].firstElementChild.remove();
+  let i = 1;
+  for (child of boxes[0].children) {
+    child.style.width = `${i * 10}%`;
+    i++;
+  }
 };
 
 bttns.addEventListener("click", press);
