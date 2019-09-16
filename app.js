@@ -24,7 +24,8 @@ const dragEnter = evt => {
 const drop = evt => {
   let cl = evt.dataTransfer.getData("text");
   let div = document.querySelector(`.${cl.split(" ")[1]}`);
-  evt.target.append(div);
+  evt.target.insertBefore(div, evt.target.childNodes[0]);
+  //source https://www.w3schools.com/jsref/met_node_insertbefore.asp
 };
 
 shell.addEventListener("dragover", dragOver);
