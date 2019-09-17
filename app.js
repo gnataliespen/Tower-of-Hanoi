@@ -1,9 +1,11 @@
-//variables
+//global variables
 const boxes = document.querySelectorAll(".box");
 const shell = document.querySelector(".wrapper");
 const bttns = document.querySelector(".bttns");
 const lvlnum = document.querySelector(".lvlnum");
+const mvCountEle = document.querySelector(".current");
 let lvls = 3;
+let mvCount = 0;
 
 //event functions
 const draggable = evt => {
@@ -17,7 +19,6 @@ const draggable = evt => {
 };
 
 const dragStart = evt => {
-  // evt.dataTransfer.dropEffect = "move";
   evt.dataTransfer.setData("text", evt.target.classList);
 };
 const dragEnter = evt => {
@@ -38,6 +39,7 @@ const drop = evt => {
     evt.target.className.includes("box")
   ) {
     evt.target.insertBefore(div, evt.target.firstElementChild);
+    mvCounter();
   }
   //source https://www.w3schools.com/jsref/met_node_insertbefore.asp
   gameOver();
@@ -47,32 +49,70 @@ const press = evt => {
   evt.target.onclick;
 };
 //helper functions
+const inProg = () => {
+  if (boxes[1].firstChild || boxes[2].firstChild) {
+    return true;
+  } else {
+    return false;
+  }
+};
 const numUp = () => {
-  if (lvls < 8) {
+  if (lvls < 8 && !inProg()) {
     lvls += 1;
     lvlnum.innerText = lvls;
     addDiv();
+    minMoves();
   }
 };
 const numDn = () => {
-  if (lvls > 3) {
+  if (lvls > 3 && !inProg()) {
     lvls -= 1;
     lvlnum.innerText = lvls;
     lessDiv();
+    minMoves();
   }
 };
-const addDiv = () => {
+const addDiv = (num = lvls) => {
   let div = document.createElement("div");
-  div.className = `ring ring${lvls}`;
+  div.className = `ring ring${num}`;
   boxes[0].appendChild(div);
 };
 const lessDiv = () => {
   boxes[0].firstElementChild.remove();
   let i = 1;
   for (child of boxes[0].children) {
+    child.className = `ring ring${i}`;
     child.style.width = `${i * 10}%`;
     i++;
   }
+};
+const reset = () => {
+  for (box of boxes) {
+    while (box.firstChild) {
+      box.firstChild.remove();
+    }
+  }
+  lvls = 3;
+  minMoves();
+  mvCounter(-1);
+  for (let i = 1; i <= lvls; i++) {
+    addDiv(i);
+  }
+};
+const minMoves = () => {
+  const minEle = document.querySelector(".min");
+  let minMvs = 7;
+  for (let i = 3; i < lvls; i++) {
+    minMvs = minMvs * 2 + 1;
+  }
+  minEle.innerText = `Minimum Moves: ${minMvs}`;
+};
+const mvCounter = (num = null) => {
+  if (num) {
+    mvCount = num;
+  }
+  mvCount += 1;
+  mvCountEle.innerHTML = `Moves: ${mvCount}`;
 };
 const gameOver = () => {
   if (boxes[2].children.length === lvls) {
