@@ -38,7 +38,7 @@ h1 {
 }
 .box {
   background: black;
-  border-left: 2px solid white;
+  border-left: 2px solid #ddd;
   width: 33.33%;
   display: flex;
   justify-content: flex-end;
