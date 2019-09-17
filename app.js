@@ -4,6 +4,12 @@ const shell = document.querySelector(".wrapper");
 const bttns = document.querySelector(".bttns");
 const lvlnum = document.querySelector(".lvlnum");
 const mvCountEle = document.querySelector(".current");
+const minEle = document.querySelector(".min");
+const footer = document.querySelector(".footer");
+const moves = document.querySelector(".moves");
+const hidden = document.querySelector(".hidden");
+const goScreen = document.querySelector(".gameOver");
+const resetBttn = document.querySelector(".reset");
 let lvls = 3;
 let mvCount = 0;
 
@@ -87,20 +93,23 @@ const lessDiv = () => {
   }
 };
 const reset = () => {
+  if (boxes[2].children.length === lvls) {
+    bttns.append(resetBttn);
+    footer.append(moves);
+    hidden.style.visibility = "hidden";
+  }
   for (box of boxes) {
     while (box.firstChild) {
       box.firstChild.remove();
     }
   }
-  lvls = 3;
-  minMoves();
-  mvCounter(-1);
   for (let i = 1; i <= lvls; i++) {
     addDiv(i);
   }
+  minMoves();
+  mvCounter(-1);
 };
 const minMoves = () => {
-  const minEle = document.querySelector(".min");
   let minMvs = 7;
   for (let i = 3; i < lvls; i++) {
     minMvs = minMvs * 2 + 1;
@@ -116,7 +125,9 @@ const mvCounter = (num = null) => {
 };
 const gameOver = () => {
   if (boxes[2].children.length === lvls) {
-    console.log("Game Over");
+    goScreen.append(resetBttn);
+    goScreen.append(moves);
+    hidden.style.visibility = "visible";
   }
 };
 
