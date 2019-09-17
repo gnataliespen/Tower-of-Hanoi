@@ -101,12 +101,14 @@ h1 {
 }
 .bttn {
   background: #ddd;
+  border: 1px solid grey;
+  border-radius: 2px;
 }
 .updn {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  margin-right: 5vh;
+  margin-right: 1vh;
 }
 .moves {
   width: 100%;
