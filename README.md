@@ -6,6 +6,7 @@
   <li> Each move consists of taking the top disk from one of the stacks and placing it on top of another stack or on an empty rod. </li>
   <li> No larger disk may be placed on top of a smaller disk. </li>
 </ol>
+<img src='https://miro.medium.com/max/2800/1*TFo66KfI1A0rrl7Fi5Ls-w.png' />
 
 <h3>Features</h3>
 <ul>
@@ -16,7 +17,7 @@
   <li>Upon completion of the puzzle the website will notify the user of there success by displaying a victory screen that also features the minimum moves and user moves </li>
 </ul>
 <h3>Technology Used</h3>
-<p>This project was made entirely in vscode with html5, css, and vanilla JavaScript ES6.</p>
+<p>This project was made entirely in vscode with HTML5, CSS, and vanilla JavaScript ES6.</p>
 
 <h3>Usage</h3>
 <p>The game can be played within the browser.</p>
