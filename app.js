@@ -38,7 +38,7 @@ const dragOver = evt => {
 const drop = evt => {
   let cl = evt.dataTransfer.getData("text");
   let div = document.querySelector(`.${cl.split(" ")[1]}`);
-  // source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+
   if (
     (!evt.target.firstElementChild ||
       div.offsetWidth < evt.target.firstElementChild.offsetWidth) &&
@@ -47,7 +47,6 @@ const drop = evt => {
     evt.target.insertBefore(div, evt.target.firstElementChild);
     mvCounter();
   }
-  //source https://www.w3schools.com/jsref/met_node_insertbefore.asp
   gameOver();
 };
 
